@@ -1,7 +1,7 @@
-gem 'minitest', '>= 5.0.0'
-require 'minitest/autorun'
-require 'minitest/pride'
-require_relative 'roman_reverter'
+gem "minitest", ">= 5.0.0"
+require "minitest/autorun"
+require "minitest/pride"
+require_relative "roman_reverter"
 
 describe "Roman Reverter" do
   it "Check revert I" do
@@ -33,52 +33,42 @@ describe "Roman Reverter" do
   end
 
   it "Check symbol pair" do
-    skip
     expect(Roman.reverter("II")).must_equal 2
   end
 
   it "Check symbol string" do
-    skip
     expect(Roman.reverter("XXX")).must_equal 30
   end
 
   it "Check mixed symbol string" do
-    skip
     expect (Roman.reverter("XVII")).must_equal 17
   end
 
   it "Check two hundred and twenty two" do
-    skip
-     expect(Roman.reverter("CCXXII")).must_equal 222
+    expect(Roman.reverter("CCXXII")).must_equal 222
   end
 
   it "Check first subtracted value" do
-    skip
     expect(Roman.reverter("IV")).must_equal 4
   end
 
   it "Check another subtracted value" do
-    skip
     expect(Roman.reverter("IX")).must_equal 9
   end
 
   it "Check 19" do
-    skip
     expect(Roman.reverter("XIX")).must_equal 19
   end
 
   it "Check forty" do
-    skip
     expect(Roman.reverter("XL")).must_equal 40
   end
 
   it "Check five hundred and seventy six" do
-    skip
-    expect( Roman.reverter("DLXXVI") ).must_equal 576
+    expect(Roman.reverter("DLXXVI")).must_equal 576
   end
 
-  it  "Check four thousand nine hundred and ninety nine" do
-    skip
-    expect( Roman.reverter("MMMMCMXCIX") ).must_equal 4999
+  it "Check four thousand nine hundred and ninety nine" do
+    expect(Roman.reverter("MMMMCMXCIX")).must_equal 4999
   end
 end
