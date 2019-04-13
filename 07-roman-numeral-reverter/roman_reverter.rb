@@ -5,22 +5,17 @@ class Roman
   def initialize
     @numeral = nil
   end
-  
+
   def self.reverter(numeral)
+    @numeral = numeral # Make passed numeral an instance variable to use in Roman.subtract method.
     arabic = 0
     i = 0
 
     numeral.each_char do |char|
-      char.upcase!
+      char.upcase! # Case insensitive
       value = Roman.calculate(char)
-      if (value == 5 || value == 10) && (numeral[i - 1] == "I" && i > 0)
-          arabic -= 2
-      elsif (value == 50 || value == 100) && (numeral[i - 1] == "X" && i > 0)
-          arabic -= 20
-      elsif value == 1000 && (numeral[i - 1] == "C" && i > 0)
-          arabic -= 200
-      end
-      arabic += value
+      subtract_amount = Roman.subtract(value, i)
+      arabic += value - subtract_amount
       i += 1
     end
 
@@ -44,4 +39,17 @@ class Roman
       return 1000
     end
   end
+
+  def self.subtract(value, i)
+    if (value == 5 || value == 10) && (@numeral[i - 1] == "I" && i > 0)
+      return 2
+    elsif (value == 50 || value == 100) && (@numeral[i - 1] == "X" && i > 0)
+      return 20
+    elsif value == 1000 && (@numeral[i - 1] == "C" && i > 0)
+      return 200
+    else
+      return 0
+    end
+  end
+  
 end
